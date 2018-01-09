@@ -1,0 +1,38 @@
+spring:
+  profiles: default
+
+server:
+  port: 8090
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+logic:
+  jndi:
+    master:
+      name: jdbc/facts_master
+      factory: org.apache.commons.dbcp2.BasicDataSourceFactory
+      maxActive: 5
+      maxIdle: 2
+      initialSize: 1
+      maxWait: 5000
+      test-on-borrow: true
+      validation-query: select 1
+    slave:
+      name: jdbc/facts_slave
+      factory: org.apache.commons.dbcp2.BasicDataSourceFactory
+      maxActive: 5
+      maxIdle: 2
+      initialSize: 1
+      maxWait: 5000
+      test-on-borrow: true
+      validation-query: select 1
+  file:
+    path:
+      local: #configure in every config file specificly
+      remote: #configure in every config file specificly

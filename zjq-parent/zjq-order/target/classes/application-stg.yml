@@ -1,0 +1,70 @@
+spring:
+  profiles: stg
+
+wxpay:
+  #第三方用户唯一凭证
+  appid: wx67113035c16edc98
+  #第三方用户唯一凭证密钥
+  appsecret: 71773e2d1f44b7ca85fe976f5345881a
+  #商户ID
+  mch_id: 1423848702
+  #商户API密钥
+  key: 71773e2d1f44b7ca85fe976f5345881a
+  #商品描述
+  body: 浙江舒适爱家
+  #交易类型,取值如下：JSAPI，NATIVE，APP
+  #JSAPI--公众号支付、NATIVE--原生扫码支付、APP--app支付，统一下单接口trade_type的传参可参考这里
+  #MICROPAY--刷卡支付，刷卡支付有单独的支付接口，不调用统一下单接口
+  trade_type: JSAPI
+  #通知地址
+  notify_url: 
+  #获取openId
+  oauth2_url: https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
+  #统一下单接口
+  pay_url: https://api.mch.weixin.qq.com/pay/unifiedorder
+  #刷新access_token,appid:公众号的唯一标识,grant_type:填写为refresh_token,
+  #refresh_token:填写通过access_token获取到的refresh_token参数  
+  refresh_token_url: https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&grant_type=refresh_token&refresh_token=REFRESH_TOKEN 
+ 
+
+logic:
+  database:
+    write_prefix:
+    read_prefix:
+  jndi:
+    master:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://rds72po9m2c809tep9ye.mysql.rds.aliyuncs.com:3306/ics_e?setUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true
+      databaseId: mysql
+      username: icse
+      password: ics_e2016
+    slave:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://rds72po9m2c809tep9ye.mysql.rds.aliyuncs.com:3306/ics_e?setUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true
+      databaseId: mysql
+      username: icse
+      password: ics_e2016      
+  mail:
+    smtphost: smtp.mxhichina.com
+    port: 25
+    auth: true
+    username: notification@logicsolutions.com.cn
+    password: logic@123
+    from: notification@logicsolutions.com.cn
+    to:
+    send_mail: true
+    send_all_test_mail: true
+  activateUser: http://staging.jiliyun.com/system/rest/users/activateUser/
+  resetPassUrl: http://staging.jiliyun.com/incentive_staging-1.0/system/resetpasspage.html  
+  frontLogin: http://staging.jiliyun.com/incentive_staging-1.0/system/activate_user.html
+  file:
+    path:
+      local: /usr/share/nginx/html/uploads
+      remote: http://staging.jiliyun.com/uploads
+logging:
+  level:
+    org.springframework.security.oauth2: INFO
+    com.logic.system: INFO    
+  file: logs/system-server-prod.log
+incentiveapi:
+  baseURL: http://staging.jiliyun.com/incentive/rest 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.zjq.mapper.read.QuestionReadMapper" >
+  <resultMap id="BaseResultMap" type="com.zjq.common.domain.order.Question" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="subject_desc" property="subjectDesc" jdbcType="VARCHAR" />
+    <result column="input_desc" property="inputDesc" jdbcType="VARCHAR" />
+    <result column="correct_response" property="correctResponse" jdbcType="VARCHAR" />
+    <result column="correct_number_start" property="correctNumberStart" jdbcType="DECIMAL" />
+    <result column="correct_number_end" property="correctNumberEnd" jdbcType="DECIMAL" />
+    <result column="input_for_exception" property="inputForException" jdbcType="VARCHAR" />
+    <result column="parent_answer_code" property="parentAnswerCode" jdbcType="VARCHAR" />
+    <result column="view_name" property="viewName" jdbcType="VARCHAR" />
+    <result column="column_for_display" property="columnForDisplay" jdbcType="VARCHAR" />
+    <result column="column_for_value" property="columnForValue" jdbcType="VARCHAR" />
+    <result column="where_clause" property="whereClause" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="created_dtm" property="createdDtm" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="INTEGER" />
+    <result column="last_modified_dtm" property="lastModifiedDtm" jdbcType="TIMESTAMP" />
+    <result column="last_modified_by" property="lastModifiedBy" jdbcType="INTEGER" />
+    <result column="deleted" property="deleted" jdbcType="BIT" />
+    <result column="point" property="point" jdbcType="DECIMAL" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, code, type, subject_desc, input_desc, correct_response, correct_number_start, correct_number_end, 
+    input_for_exception, parent_answer_code, view_name, column_for_display, column_for_value, 
+    where_clause, version, created_dtm, created_by, last_modified_dtm, last_modified_by, 
+    deleted, point, subject, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+	select 
+    <include refid="Base_Column_List" />
+    from system_question
+    where id = #{id,jdbcType=INTEGER}
+    and deleted = 0
+  </select>
+  
+  <select id="checkCodeUnique" resultType="int" parameterType="com.zjq.common.domain.order.Question">
+    select count(1) from system_question 
+    where deleted = 0 
+    and code = #{code, jdbcType=VARCHAR}
+    <if test="id != null">
+  		and id != #{id}
+  	</if>
+  </select>
+
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.zjq.dubbo</groupId>
+    <artifactId>zjq-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>zjq-user</artifactId>
+  <packaging>war</packaging>
+  <name>zjq-user Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <properties>  
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
+    <java.version>1.7</java.version>  
+    <com.alibaba.dubbo.version>2.5.3</com.alibaba.dubbo.version>  
+    <org.apache.zookeeper.version>3.4.6</org.apache.zookeeper.version>  
+    <com.github.sgroschupf.zkclient.version>0.1</com.github.sgroschupf.zkclient.version> 
+  </properties> 
+  <dependencies>
+  	<dependency>
+			<groupId>com.zjq.dubbo</groupId>
+			<artifactId>zjq-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+    <!-- spring boot web支持：mvc,aop...  
+        这个是最基本的，基本每一个基本的demo都是需要引入的。  
+    -->  
+    <dependency>  
+       <groupId>org.springframework.boot</groupId>  
+       <artifactId>spring-boot-starter-web</artifactId>  
+    </dependency>  
+      
+    <!-- mysql驱动.  
+       我们的demo是多数据源，在这里使用Mysql数据库.  
+    -->  
+    <dependency>  
+       <groupId>mysql</groupId>  
+       <artifactId>mysql-connector-java</artifactId>  
+    </dependency>  
+      
+    <!-- spring jpa  
+       spring jpa中带有自带的tomcat数据连接池;  
+       在代码中我们也需要用到.  
+     -->  
+    <dependency>  
+       <groupId>org.springframework.boot</groupId>  
+       <artifactId>spring-boot-starter-data-jpa</artifactId>  
+    </dependency>  
+      
+    <!-- junit test 测试 -->  
+    <dependency>  
+            <groupId>org.springframework.boot</groupId>  
+            <artifactId>spring-boot-starter-test</artifactId>  
+            <scope>test</scope>  
+    </dependency>
+    
+    <!-- dubbo -->  
+        <dependency>  
+            <groupId>com.alibaba</groupId>  
+            <artifactId>dubbo</artifactId>  
+            <exclusions>  
+                <exclusion>  
+                    <groupId>org.springframework</groupId>  
+                    <artifactId>spring</artifactId>  
+                </exclusion>  
+            </exclusions>  
+            <version>${com.alibaba.dubbo.version}</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>com.github.sgroschupf</groupId>  
+            <artifactId>zkclient</artifactId>  
+            <version>${com.github.sgroschupf.zkclient.version}</version>  
+        </dependency> 
+        <dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>${org.apache.zookeeper.version}</version>
+			<exclusions>
+				<exclusion>
+                  <groupId>log4j</groupId>
+                  <artifactId>log4j</artifactId>
+              	</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency> 
+  </dependencies>
+   <build>   
+    <finalName>zjq-user</finalName>
+    <plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+		 		<source>${java.version}</source>
+				<target>${java.version}</target>
+				<encoding>${project.build.sourceEncoding}</encoding>
+			</configuration>
+		</plugin>
+	</plugins>  
+  </build>  
+</project>

@@ -1,0 +1,13 @@
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\service\ICRUDService.java
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\util\ICache.java
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\domain\BasePojo.java
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\service\IErrorMessage.java
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\util\QueryUtil.java
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\service\IQuestionService.java
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\util\CacheFactory.java
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\util\QueryCriteria.java
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\util\QueryOrderBy.java
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\ErrorMessageEnum.java
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\util\SysCache.java
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\exception\BusinessException.java
+D:\development\eclipse\spring-boot-dubbo\zjq-parent\zjq-common\src\main\java\com\zjq\common\util\PagingTool.java

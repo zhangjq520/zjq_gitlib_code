@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://code.alibabatech.com/schema/dubbo  
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">  
+  
+  <bean id="dubbo_application" abstract="true" class="com.alibaba.dubbo.config.ApplicationConfig">  
+     <property name="name" value="order_consume"/>  
+	</bean> 
+    
+    <!--只要存在远程调用其他模块都需添加Filter配置-->
+    <dubbo:consumer  filter="transactionFilter" />
+    
+    <!-- 注册中心暴露服务地址 -->  
+   <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" />  
+      
+    <dubbo:reference id="userService" interface="com.zjq.common.service.user.UserService" check="false"/>  
+</beans>  

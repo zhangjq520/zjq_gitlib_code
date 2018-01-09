@@ -1,0 +1,22 @@
+spring:
+  profiles: dev 
+   
+logic:
+  database:
+    write_prefix:
+    read_prefix:
+  jndi:
+    master:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/order?setUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true
+      databaseId: mysql
+      username: root
+      password: 123456
+    slave:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/order?setUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true
+      databaseId: mysql
+      username: root
+      password: 123456
+logging:
+  org.apache.ibatis.mapping: INFO

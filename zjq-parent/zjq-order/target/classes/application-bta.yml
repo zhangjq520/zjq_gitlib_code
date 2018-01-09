@@ -1,0 +1,108 @@
+spring:
+  profiles: bta
+
+wxpay:
+  #第三方用户唯一凭证
+  appid: wx67113035c16edc98
+  #第三方用户唯一凭证密钥
+  appsecret: 71773e2d1f44b7ca85fe976f5345881a
+  #商户ID 
+  mch_id: 1423848702
+  #商户API密钥
+  key: 71773e2d1f44b7ca85fe976f5345881a
+  #商品描述
+  body: 浙江舒适爱家
+  #交易类型,取值如下：JSAPI，NATIVE，APP
+  #JSAPI--公众号支付、NATIVE--原生扫码支付、APP--app支付，统一下单接口trade_type的传参可参考这里
+  #MICROPAY--刷卡支付，刷卡支付有单独的支付接口，不调用统一下单接口
+  trade_type: JSAPI
+  #通知地址
+  notify_url: http://ihome.shlogic.com.cn/system/rest/pay/NATIVE_return
+  #获取openId
+  oauth2_url: https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
+  #统一下单接口
+  pay_url: https://api.mch.weixin.qq.com/pay/unifiedorder
+  #查询订单接口
+  orderquery_url: https://api.mch.weixin.qq.com/pay/orderquery
+  #获取access token
+  token_url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+  #刷新access_token,appid:公众号的唯一标识,grant_type:填写为refresh_token,
+  #refresh_token:填写通过access_token获取到的refresh_token参数  
+  refresh_token_url: https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&grant_type=refresh_token&refresh_token=REFRESH_TOKEN 
+  ticket_url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi
+  
+sms:
+  #获取token用户名
+  userName: ssaj
+  #获取token密码
+  password: ssaj2017admin
+  #获取token地址
+  token_url: http://sms.shlogic.com.cn/Logic-SMS-1.0/rest/permissions/login
+  #注册短信模板
+  signup_message_code: SMS_51635021
+  #重置密码短信模板
+  password_message_code: SMS_51735067
+  #修改绑定手机号短信模板
+  changetell_message_code: SMS_51755053
+  #分销商申请验证短信模板
+  distribution_message_code: SMS_51760050
+  #注册短信有效时间(单位：分钟)
+  signup_message_expire: 30
+  #重置密码短信有效时间(单位：分钟)
+  password_message_expire: 30
+  #修改绑定手机号短信有效时间(单位：分钟)
+  changetell_message_expire: 30
+  #分销商申请验证短信有效时间(单位：分钟)
+  distribution_message_expire: 30
+  #短信签名
+  sign_name: 蜗牛舒适家
+  #发送短信地址
+  sendsms_url: http://sms.shlogic.com.cn/Logic-SMS-1.0/rest/message
+  
+logic:
+  database:
+    write_prefix:
+    read_prefix:
+  jndi:
+    master:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.8.45:3306/ihome_dev?setUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true
+      databaseId: mysql
+      username: ihome
+      password: 123
+    slave:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.8.45:3306/ihome_dev?setUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true
+      databaseId: mysql
+      username: ihome
+      password: 123
+  mail:
+    smtphost: smtp.mxhichina.com
+    port: 25
+    auth: true
+    username: notification@logicsolutions.com.cn
+    password: logic@123
+    from: notification@logicsolutions.com.cn
+    to: 
+#    cc:
+#    bcc:
+    send_mail: true
+    send_all_test_mail: true
+  file:
+    path:
+      local: /usr/share/nginx/html/uploads
+      remote: http://192.168.8.90/uploads
+  activateUser: http://toshiba-elevator-alpha.shlogic.com.cn/system/rest/users/activateUser/
+  resetPassUrl: http://toshiba-elevator-alpha.shlogic.com.cn/incentive_alpha-1.1/system/resetpasspage.html    
+  frontLogin: http://toshiba-elevator-alpha.shlogic.com.cn/incentive_alpha-1.1/system/activate_user.html
+  wsdl:
+    notify-url: http://10.84.16.110:8090/GTENotify/services/Service/Notify
+    service-url: http://10.84.16.110:8090/GTENotify/services/Service
+    context-package: com.logic.system.wsdl
+  jpush:
+    masterSecret: 1bad0b77f1183c66c2ceecd1
+    appKey: 18cc9025d641148e7e22e81d
+logging:
+  org.springframework.security.oauth2: DEBUG
+  org.apache.ibatis.mapping: DEBUG
+  file: logs/system-server-b.log
