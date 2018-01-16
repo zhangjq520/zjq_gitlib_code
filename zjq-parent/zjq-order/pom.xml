@@ -19,7 +19,7 @@
 		<org.apache.zookeeper.version>3.4.6</org.apache.zookeeper.version>
 		<com.github.sgroschupf.zkclient.version>0.1</com.github.sgroschupf.zkclient.version>
 	</properties>
-	<dependencies>
+	<dependencies> 
 		<dependency>
 			<groupId>com.zjq.dubbo</groupId>
 			<artifactId>zjq-common</artifactId>
